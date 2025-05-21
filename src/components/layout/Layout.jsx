@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+
+import Header from "./Header";
 
 const Layout = () => {
     return (
         <>
-            <h1 className="text-teal-600 text-2xl">Book My Screen</h1>
+            <Header />
             <Outlet />
         </>
     )
