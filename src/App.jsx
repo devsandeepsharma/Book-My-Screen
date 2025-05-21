@@ -1,7 +1,29 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Layout from "./components/layout/Layout";
+import Home from "./pages/Home";
+import Movie from "./pages/Movie";
+
 const App = () => {
-  return (
-    <h1 className="text-teal-600">Book My Screen</h1>
-  )
+
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Layout />,
+            children: [
+                {
+                    path: "/",
+                    element: <Home />
+                },
+                {
+                    path: "/:id",
+                    element: <Movie />
+                }
+            ]
+        }
+    ])
+
+    return <RouterProvider router={router} />
 }
 
 export default App;
