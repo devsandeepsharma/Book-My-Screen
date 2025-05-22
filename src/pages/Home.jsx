@@ -14,11 +14,11 @@ const Home = () => {
     return (
         <main className="mb-5">
             <HeroCarousel movies={heroSectionMovies} />
-            <div className="px-6 py-4">
+            <div className="px-6 py-4 mt-2">
                 <div className="max-w-6xl mx-auto flex flex-col gap-4 md:gap-8">
                     {
                         categories.map(({ category }) => {
-                            // if (category === "Hero Section") return null;
+                            if (category === "Hero Section") return null;
 
                             const filteredMovies = filterMoviesByCategory(movies, category);
 

@@ -1,8 +1,8 @@
-const shimmerClass = "animate-pulse bg-neutral-200 dark:bg-neutral-700 rounded";
+const shimmerClass = "animate-pulse bg-neutral-200 rounded";
 
 const Loader = () => {
     return (
-        <main className="min-h-screen bg-white dark:bg-black">
+        <main className="min-h-screen bg-white">
             <section className="w-full h-[300px] overflow-hidden">
                 <div className={`${shimmerClass} w-full h-full`} />
             </section>

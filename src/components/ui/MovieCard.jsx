@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import { formatDate } from "../../utils/dateUtils";
+
 const MovieCard = ({ movie }) => {
     return (
         <Link 
@@ -14,7 +16,7 @@ const MovieCard = ({ movie }) => {
             <div className="flex flex-col h-full px-3 py-3 pt-1">
                 <h2 className="text-lg font-semibold text-gray-900">{movie.name}</h2>
                 <p className="text-sm text-gray-600 mt-1">{movie.language}</p>
-                <p className="text-xs text-gray-500 mt-2">IMDB: ⭐ {movie.imdbRating} | Release: {movie.releaseDate}</p>
+                <p className="text-xs text-gray-500 mt-2">IMDB: ⭐ {movie.imdbRating} | Release: {formatDate(movie.releaseDate)}</p>
             </div>
         </Link>
   );

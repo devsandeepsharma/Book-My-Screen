@@ -20,8 +20,8 @@ const Header = () => {
 
     const navLinks = [
         { path: "#home", label: "Home" },
-        { path: "#Now Playing", label: "Now Playing" },
-        { path: "#Top Rated", label: "Top Rated" },
+        { path: "#Now-Playing", label: "Now Playing" },
+        { path: "#Top-Rated", label: "Top Rated" },
     ]
 
     return (

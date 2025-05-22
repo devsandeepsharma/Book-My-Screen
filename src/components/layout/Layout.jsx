@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import Loader from "../ui/Loader";
 
 import { CategoryService, MovieService } from "../../services/Database";
 import { moviesActions } from "../../store/moviesSlice";
-import Loader from "../ui/Loader";
 
 const Layout = () => {
 

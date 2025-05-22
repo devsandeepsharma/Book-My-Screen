@@ -7,6 +7,7 @@ import BookTicket from "../components/form/BookTicket";
 
 import { uiActions } from "../store/uiSlice";
 import { findMovie } from "../utils/movieUtils";
+import { formatDate } from "../utils/dateUtils";
 
 const Movie = () => {
 
@@ -45,10 +46,10 @@ const Movie = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute z-10 w-full h-full px-6 py-4 flex flex-col items-start justify-end">
                     <div className="max-w-6xl pb-6 mx-auto w-full mt-auto">
-                        <h1 className="text-4xl md:text-5xl text-white font-bold">Interstellar</h1>
-                        <p className="mt-2 text-lg text-white">Directed by Christopher • English</p>
-                        <p className="text-sm text-gray-300 mt-1">Release Date: 21 May 2025</p>
-                        <p className="text-sm text-yellow-400 mt-1">IMDb: ⭐ 9.5</p>
+                        <h1 className="text-4xl md:text-5xl text-white font-bold">{movie.name}</h1>
+                        <p className="mt-2 text-lg text-white">Directed by {movie.director} • {movie.language}</p>
+                        <p className="text-sm text-gray-300 mt-1">Release Date: {formatDate(movie.releaseDate)}</p>
+                        <p className="text-sm text-yellow-400 mt-1">IMDb: ⭐ {movie.imdbRating}</p>
                     </div>
                 </div>
             </div>
@@ -107,7 +108,6 @@ const Movie = () => {
                         <iframe
                             src={movie.trailer}
                             title={`${movie.name} Trailer`}
-                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                             className="w-full h-[300px] md:h-[500px] object-cover"

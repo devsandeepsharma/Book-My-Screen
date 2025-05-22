@@ -33,7 +33,7 @@ const BookTicket = ({ showDetails }) => {
         setError("");
         const ticketData = {
             ...values,
-            name: showDetails.movieName,
+            movieName: showDetails.movieName,
             date: showDetails.date,
             time: showDetails.time
         }

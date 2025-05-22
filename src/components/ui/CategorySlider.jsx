@@ -9,7 +9,7 @@ import MovieCard from "./MovieCard";
 const CategorySlider = ({ title, movies }) => {
     return (
         <div>
-            <h3 id={`#${movies[0].category}`} className="text-2xl font-bold mb-4">{title}</h3>
+            <h3 id={movies[0].category.replace(" ", "-")} className="text-2xl font-bold mb-4">{title}</h3>
             <Swiper
                 modules={[Navigation]}
                 navigation
