@@ -9,7 +9,9 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => {
-        setIsOpen(prev => !prev)
+        if (window.innerWidth < 768) {
+            setIsOpen(prev => !prev);
+        }
     };
 
     useEffect(() => {
@@ -18,8 +20,8 @@ const Header = () => {
 
     const navLinks = [
         { path: "#home", label: "Home" },
-        { path: "#now-playing", label: "Now Playing" },
-        { path: "#top-rated", label: "Top Rated" },
+        { path: "#Now Playing", label: "Now Playing" },
+        { path: "#Top Rated", label: "Top Rated" },
     ]
 
     return (
