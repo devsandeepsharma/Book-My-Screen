@@ -8,6 +8,7 @@ import Button from "../ui/Button";
 
 import { uiActions } from "../../store/uiSlice";
 import { TicketService } from "../../services/Database";
+import sendEmail from "../../services/Email";
 
 const BookTicket = ({ showDetails }) => {
     
@@ -38,8 +39,15 @@ const BookTicket = ({ showDetails }) => {
         }
         try {
             await TicketService.create(ticketData);
+            await sendEmail({
+                email: values.email, 
+                userName: values.name, 
+                movieName: showDetails.movieName, 
+                showtime: `${showDetails.date} at ${showDetails.time}`
+            });
             setSuccess(true);
         } catch (error) {
+            console.log(error)
             setError("Failed to book ticket. Please try again.");
         } finally {
             actions.setSubmitting(false);
@@ -57,7 +65,8 @@ const BookTicket = ({ showDetails }) => {
             </p>
             <Formik
                 initialValues={{
-                    name: ""
+                    name: "",
+                    email: ""
                 }}
                 validationSchema={bookingSchema}
                 onSubmit={(values, actions) => {
@@ -75,7 +84,7 @@ const BookTicket = ({ showDetails }) => {
                                 placeholder="Enter your name"
                             />
                             <p className="text-xs font-medium text-red-600">
-                                <ErrorMessage name="category" />
+                                <ErrorMessage name="name" />
                                 {error && error}
                             </p>
                         </div>
@@ -88,7 +97,7 @@ const BookTicket = ({ showDetails }) => {
                                 placeholder="Enter your email"
                             />
                             <p className="text-xs font-medium text-red-600">
-                                <ErrorMessage name="category" />
+                                <ErrorMessage name="email" />
                                 {error && error}
                             </p>
                         </div>
