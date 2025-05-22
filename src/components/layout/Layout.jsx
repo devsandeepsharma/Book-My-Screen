@@ -7,6 +7,7 @@ import Footer from "./Footer";
 
 import { CategoryService, MovieService } from "../../services/Database";
 import { moviesActions } from "../../store/moviesSlice";
+import Loader from "../ui/Loader";
 
 const Layout = () => {
 
@@ -41,11 +42,7 @@ const Layout = () => {
         <>
             <Header />
             {
-                loading ? (
-                    <div className="text-center p-4">Loading...</div>
-                ) : (
-                    <Outlet />
-                )
+                loading ? <Loader /> : <Outlet />
             }
             <Footer />
         </>
