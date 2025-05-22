@@ -24,22 +24,8 @@ class Database {
             }));
         });
     }
-
-    update(id, updatedData) {
-        const dbRef = ref(this.db, `${this.path}/${id}`);
-        return update(dbRef, updatedData);
-    }
-
-    updateNested(path, updatedData) {
-        const dbRef = ref(this.db, path);
-        return set(dbRef, updatedData);
-    }
-
-    delete(id) {
-        const dbRef = ref(this.db, `${this.path}/${id}`);
-        return remove(dbRef);
-    }
 }
 
 export const CategoryService = new Database("categories");
 export const MovieService = new Database("movies");
+export const TicketService = new Database("tickets");

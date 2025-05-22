@@ -7,12 +7,14 @@ import Modal from "../ui/Modal";
 import Button from "../ui/Button";
 
 import { uiActions } from "../../store/uiSlice";
+import { TicketService } from "../../services/Database";
 
 const BookTicket = ({ showDetails }) => {
     
     const dispatch = useDispatch();
 
     const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
     
     const bookingSchema = Yup.object({
         name: Yup.string()
@@ -28,7 +30,20 @@ const BookTicket = ({ showDetails }) => {
     
     const handleSubmit = async (values, actions) => {
         setError("");
-        
+        const ticketData = {
+            ...values,
+            name: showDetails.movieName,
+            date: showDetails.date,
+            time: showDetails.time
+        }
+        try {
+            await TicketService.create(ticketData);
+            setSuccess(true);
+        } catch (error) {
+            setError("Failed to book ticket. Please try again.");
+        } finally {
+            actions.setSubmitting(false);
+        }
     }
 
     return (
@@ -77,6 +92,12 @@ const BookTicket = ({ showDetails }) => {
                                 {error && error}
                             </p>
                         </div>
+                        {
+                            success && (
+                                <p className="text-green-600 font-medium text-sm mb-2">
+                                    Ticket booked successfully! Check your email for the ticket.
+                                </p>)
+                        }
                         <div className="flex gap-3 ml-auto">
                             <Button type="button" variant="outline" onClick={closeModal}>Close</Button>
                             <Button type="submit" disabled={isSubmitting}>
