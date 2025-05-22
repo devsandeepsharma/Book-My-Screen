@@ -12,8 +12,10 @@ const HeroCarousel = ({ movies=[] }) => {
         <div className="relative h-[450px] w-full">
             <Swiper
                 modules={[Autoplay, Pagination, Navigation ]}
+                navigation
                 autoplay={{ delay: 3000 }}
                 loop={true}
+                grabCursor={true}
                 pagination={{ clickable: true }}
                 className="h-full"
             >
