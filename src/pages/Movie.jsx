@@ -1,20 +1,28 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Button from "../components/ui/Button";
+import BookTicket from "../components/form/BookTicket";
 
+import { uiActions } from "../store/uiSlice";
 import { findMovie } from "../utils/movieUtils";
 
 const Movie = () => {
 
     const { id } = useParams();
+    const dispatch = useDispatch();
 
     const { movies } = useSelector((state) => state.movies);
+    const { isModalOpen } = useSelector((state) => state.ui);
+
+    const [selectedDate, setSelectedDate] = useState();
 
     const movie = findMovie(movies, id);
 
     const openModal = (movieName, date, time) => {
-        console.log(movieName, date, time)
+        setSelectedDate({ movieName, date, time })
+        dispatch(uiActions.openModal());
     }
 
     if(!movie) return (
@@ -27,6 +35,7 @@ const Movie = () => {
 
     return (
         <main>
+            { isModalOpen && <BookTicket showDetails={selectedDate} /> }
             <div className="relative w-full h-[450px]">
                 <img
                     src={movie.heroImageUrl || movie.poster}
