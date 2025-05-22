@@ -1,14 +1,15 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 import MovieCard from "./MovieCard";
 
 const CategorySlider = ({ title, movies }) => {
     return (
         <div>
-            <h3 className="text-2xl font-bold mb-4">{title}</h3>
+            <h3 id={`#${movies[0].category}`} className="text-2xl font-bold mb-4">{title}</h3>
             <Swiper
                 modules={[Navigation]}
                 navigation

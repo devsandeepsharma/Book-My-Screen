@@ -6,7 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import { CategoryService, MovieService } from "../../services/Database";
-import { moviesActions } from "../store/moviesSlice";
+import { moviesActions } from "../../store/moviesSlice";
 
 const Layout = () => {
 

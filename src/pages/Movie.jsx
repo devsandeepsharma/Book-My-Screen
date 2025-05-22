@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Button from "../components/ui/Button";
 
-import { findMovie } from "../components/utils/movieUtils";
+import { findMovie } from "../utils/movieUtils";
 
 const Movie = () => {
 
@@ -17,6 +17,14 @@ const Movie = () => {
         console.log(movieName, date, time)
     }
 
+    if(!movie) return (
+        <div className="w-full min-h-screen px-6 py-4">
+            <div className="max-w-6xl pb-6 mx-auto w-full mt-auto">
+                 <h1 class="text-xl text-center">Movie not found</h1>
+            </div>
+        </div>
+    )
+
     return (
         <main>
             <div className="relative w-full h-[450px]">
@@ -28,10 +36,10 @@ const Movie = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute z-10 w-full h-full px-6 py-4 flex flex-col items-start justify-end">
                     <div className="max-w-6xl pb-6 mx-auto w-full mt-auto">
-                        <h1 class="text-4xl text-5xl text-white font-bold">Interstellar</h1>
-                        <p class="mt-2 text-lg text-white">Directed by Christopher • English</p>
-                        <p class="text-sm text-gray-300 mt-1">Release Date: 21 May 2025</p>
-                        <p class="text-sm text-yellow-400 mt-1">IMDb: ⭐ 9.5</p>
+                        <h1 className="text-4xl md:text-5xl text-white font-bold">Interstellar</h1>
+                        <p className="mt-2 text-lg text-white">Directed by Christopher • English</p>
+                        <p className="text-sm text-gray-300 mt-1">Release Date: 21 May 2025</p>
+                        <p className="text-sm text-yellow-400 mt-1">IMDb: ⭐ 9.5</p>
                     </div>
                 </div>
             </div>

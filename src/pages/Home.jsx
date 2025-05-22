@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
-import { filterMoviesByCategory } from "../components/utils/movieUtils";
+
 import HeroCarousel from "../components/ui/HeroCarousel";
 import CategorySlider from "../components/ui/CategorySlider";
+
+import { filterMoviesByCategory } from "../utils/movieUtils";
 
 const Home = () => {
 
